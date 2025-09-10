@@ -1,3 +1,8 @@
+## RWA updates 9/10/2025
+
+In an attempt to reduce the SD recording dropout rate, this version of the code miniizes the use of FATFS. FATFS is still used to open and close the file, and to enable contiguous sectors in the file using f_expand. However, FATFS did not allow for pre-erasing all the contiguous sectors, which is now done using SDHC low-level functions. The streaming write is also done using direct writes to the SD card control regeisters (using the struct provided in the mdsk). Another change is that the streaming write can be non-blocking, and uses a built-in dma channel to offload the processor during the write cycle (there's a callback function that is called when it is done). There is a #define at the top of main() that can be used to set BLOCKING or NON-BLOCKING behavior.
+
+
 ## Description
 
 - This demo reads audio samples from the ADC at 384kHz and writes .wav files with various sample rates and bit depths to the SD cards
