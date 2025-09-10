@@ -1,0 +1,34 @@
+// address of peripherals for direct bare-metal register access
+#define SPI0_BASE_addr  0x400BE000
+#define SPI1_BASE_addr  0x40046000
+
+// SD card clock freq control
+
+
+// SPI 0 regs
+
+#define SPI0_CTRL0_direct  (*( (  unsigned int * )SPI0_CTRL0_addr ) )
+#define SPI0_CTRL1_direct  (*( ( volatile unsigned int * )SPI0_CTRL1_addr ) )
+#define SPI0_CTRL2_direct  (*( ( volatile unsigned int * )SPI0_CTRL2_addr ) )
+
+
+// SPI 1 regs
+#define SPI1_CTRL0_direct  (*( (  unsigned int * )SPI1_CTRL0_addr ) )
+#define SPI1_CTRL1_direct  (*( ( volatile unsigned int * )SPI1_CTRL1_addr ) )
+#define SPI1_CTRL2_direct  (*( ( volatile unsigned int * )SPI1_CTRL2_addr ) )
+
+
+
+// *****bare-metal direct-register access to SP 0,SPI1, SPI2, and DMA0 peripheral registers**
+
+static uint32_t SPI0_CTRL0_addr =  (SPI0_BASE_addr + 0x00000004);
+static uint32_t SPI0_CTRL1_addr =  (SPI0_BASE_addr + 0x00000008);
+static uint32_t SPI0_CTRL2_addr =  (SPI0_BASE_addr + 0x0000000c);
+
+
+static uint32_t SPI1_CTRL0_addr =  (SPI1_BASE_addr + 0x00000004);
+static uint32_t SPI1_CTRL1_addr =  (SPI1_BASE_addr + 0x00000008);
+static uint32_t SPI1_CTRL2_addr =  (SPI1_BASE_addr + 0x0000000c);
+
+
+
